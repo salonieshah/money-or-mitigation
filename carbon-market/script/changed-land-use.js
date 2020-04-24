@@ -116,7 +116,7 @@ var text = svgContainer.append("text")
                         .text("Farming, grazing of livestock, mining, and drilling combined account for more than half of all deforestation.")
                         .attr("font-family", "Montserrat")
                         .attr("font-weight", "600")
-                        .attr("font-size",  "0.7em")
+                        .attr("font-size",  "2em")
                         .attr("fill", "#242424")
 
 

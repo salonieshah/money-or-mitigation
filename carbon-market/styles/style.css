@@ -61,6 +61,17 @@ body{
     }
 
 
+    .intro-viz{
+        float: left;
+        width: 55%; /* two cols of images */
+        padding: 5px;
+    }
+    
+    .intro-content{
+       float: right;
+        width: 40%; /* two cols of images */
+        padding: 5px; 
+    }
 
 
 
@@ -106,13 +117,6 @@ body{
         line-height: 180%;
     }
 
-
-        /* header.matrix {
-            height: 100%;
-            margin-left: -10%;
-            margin-right: -10%;
-        }
-       */
         .highlight{
             background: #D93644;
         }
