@@ -1,5 +1,3 @@
-console.log("Hello World")
- 
 var svgContainer = d3.select("#forest-area")
                     .append("div")
                    .classed("svg-container", true) //container class to make it responsive

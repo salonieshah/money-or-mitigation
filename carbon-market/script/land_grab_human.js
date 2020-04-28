@@ -3,7 +3,7 @@ d3.csv(" ./database/ethnographic_findings.csv", function(data) {
     
     var svgContainer = d3.select("#land_grab_human")
                         .append("div")
-                        .classed("svg-container", true) //container class to make it responsive
+                        .classed("land-container", true) //container class to make it responsive
                         .append("svg")
                         //responsive SVG needs these 2 attributes and no width and height attr
                         .attr("preserveAspectRatio", "xMinYMin meet")
@@ -11,6 +11,18 @@ d3.csv(" ./database/ethnographic_findings.csv", function(data) {
                         //class to make it responsive
                         .classed("svg-content-responsive", true); 
 
+
+    
+         var myimage = svgContainer.append('image')
+        .attr('xlink:href', "assets/images/local_confusion.svg")
+        // .attr('width', '100%')
+        .attr('height', '100%')
+        .attr("transform","translate(-10,-10)")
+        .style('visibility', 'visible')
+        .attr("id", "clip_1")
+        .style("opacity", "1");
+
+    
 
     d3.select("#local_confusion").on('click', function(){
          var myimage = svgContainer.append('image')
