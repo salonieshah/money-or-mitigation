@@ -68,7 +68,7 @@ body{
        font-size: 1.5em;
        color: #D93644;
        margin-top: 4%;
-       margin-bottom: 1%;
+       /*margin-bottom: 1%;*/
        font-weight: 600;
        text-align: left;
     }
@@ -101,6 +101,7 @@ body{
 
         .strong {
             color: #f2f2f2;
+            font-weight:600;
         }
 
 
@@ -160,19 +161,19 @@ body{
 .title{
      float: left;
         width: 99%; /* two cols of images */
-        padding: 5px;
+        /*padding: 5px;*/
 }
 
 .sub-title{
      float: left;
         width: 99%; /* two cols of images */
-        padding: 5px;
+        /*padding: 5px;*/
 }
 
 .caption{
     float: left;
         width: 99%; /* two cols of images */
-        padding: 5px;
+        /*padding: 5px;*/
 }
 
 .full-content{
