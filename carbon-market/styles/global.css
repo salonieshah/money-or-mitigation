@@ -18,10 +18,10 @@ body{
   
 
     header {
-        width: 100%;
+        width: auto;
         height: 100%; 
         padding:5%, 5%;
-        background-image: url("../assets/Money_or_Mitigation.svg");
+        background-image: url("../assets/title.svg");
         background-color: #F3F5F0;
         background-repeat: no-repeat; 
         background-attachment: fixed; 
@@ -87,6 +87,14 @@ body{
         padding-top: 5%;
     }
     
+    h5 {
+        font-size: 0.62em;
+        padding: none;
+        margin: 0.1%;
+        font-weight: 300;
+        line-height: 180%;
+    }
+    
     p {
         font-size: 0.8em;
         padding: none;
@@ -124,33 +132,36 @@ body{
     .quater_content{
        float: right;
     width: 30%; /* two cols of images */
-    padding: 5px; 
+    /*padding: 5px; */
     }
 
 
     .intro_viz{
         float: left;
-        width: 55%; /* two cols of images */
-        padding: 5px;
+        width: 55%; 
+        /*padding-right:5%;*/
+        /*padding: 5px;*/
         /*margin-top:2.5%;*/
     }
     
     .intro_content{
        float: right;
-        width: 40%; /* two cols of images */
-        padding: 5px; 
+        width: 45%; /* two cols of images */
+        /*padding: 5px; */
+        padding-bottom:3%;
     }
     
-    .intro_viz_right {
-        float: right;
-        width: 55%; /* two cols of images */
-        padding: 5px;
-    }
+    /*.intro_viz_right {*/
+    /*    float: right;*/
+        /*width: 55%; */
+        /*padding: 5px;*/
+    /*}*/
     
     .intro_content_left {
        float: left;
-        width: 40%; /* two cols of images */
-        padding: 5px; 
+        width: 45%; /* two cols of images */
+        padding-bottom:3%;
+        /*padding: 5px; */
     }
     
     /*.row{*/
@@ -194,13 +205,13 @@ body{
 .half_content_left{
     float: left;
     width: 45%; /* two cols of images */
-    padding: 5px;
+    /*padding: 5px;*/
 }
 
 .half_content_right{
     float: right;
     width: 45%; /* two cols of images */
-    padding: 5px;
+    /*padding: 5px;*/
 }
 
 .cut_off{
@@ -215,3 +226,24 @@ body{
             color: #D93644;
             font-weight:600;
         }
+        
+        
+.end_container {
+  position: relative;
+  text-align: center;
+}
+
+
+.text-block {
+  position: absolute;
+  bottom: 8%;
+  text-align: center;
+  /*right: 20px;*/
+  padding-left: 10%;
+  /*padding-right: 10%;*/
+}
+
+#rotate_img{
+    -ms-transform: rotate(90deg); /* IE 9 */
+    transform: rotate(180deg);
+}
