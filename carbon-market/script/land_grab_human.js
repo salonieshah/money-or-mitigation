@@ -62,7 +62,7 @@ d3.csv(" ./database/ethnographic_findings.csv", function(data) {
     
      d3.select("#implementationMRV").on('click', function(){
          var myimage = svgContainer.append('image')
-        .attr('xlink:href', "assets/images/negetive_view.svg")
+        .attr('xlink:href', "assets/images/implementationMRV.svg")
         // .attr('width', 500)
         .attr('height', '100%')
         .attr("transform","translate(-10,-10)")

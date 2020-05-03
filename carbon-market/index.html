@@ -5,6 +5,10 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
     <script src="https://d3js.org/d3.v3.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
     
     <!--CSS-->
     <link rel="stylesheet" href="styles/global.css">
@@ -12,6 +16,8 @@
     <link rel="stylesheet" href="styles/introchart.css">
     <link rel="stylesheet" href="styles/nav.css">
     <link rel="stylesheet" href="styles/dropdown.css">
+    <link rel="stylesheet" href="styles/map_style.css">
+   
 </head>
 
 <body>
@@ -471,10 +477,58 @@
     <!--    </div>-->
     
     
+    
+    
+        <div class="full">
+            <div class="sub-title">
+                    <h4>DEFORESTATION WITH DIFFERENT DEFINITIONS</h4>
+                </div>
+        <div class="row">
+        <div class="map_style">
+            <div class="full_content">
+                <div id="map"></div>
+                <div style="display:flex;">
+                  <div style="display:flex;flex-direction: column; flex:5">
+                    <div id="main" style=" display:flex; width: 100%;flex-wrap: wrap;"></div>
+                    <div id="secondary" style=" display:flex; max-width: 100%; flex-wrap: wrap;"></div>
+                  </div>
+                  <div class="parent-alias" style="display:flex; flex: 1; padding: 10px">
+                    <div class="child-alias">
+                      <div class="child-alias-box child-alias-box-1"></div>
+                      <div class="alias-label" onclick="specificPoint('Caribbean-Latin')">Caribbean-Latin</div>
+                    </div>
+                    <div class="child-alias">
+                      <div class="child-alias-box child-alias-box-2"></div> 
+                      <div class="alias-label" onclick="specificPoint('Africa')">Africa</div>
+                    </div>
+                    <div class="child-alias">
+                      <div class="child-alias-box child-alias-box-3"></div> 
+                      <div class="alias-label" onclick="specificPoint('Asia-Pacific')">Asia-Pacific</div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="parent-bar">
+                    <div class="child-bar-1" onclick="specificPoint('Caribbean-Latin')">
+                    </div>
+                    <div class="child-bar-2" onclick="specificPoint('Africa')">
+                    </div>
+                    <div class="child-bar-3" onclick="specificPoint('Asia-Pacific')">
+                    </div>
+                  </div>
+            </div>
+    </div>
+      </div>   
+        </div>
+    
+    
+    
+    
+    
+    
         <div class="full">
                 <div class="half_content_left">
                     <div class="caption">
-                        <h4>THE PROBLEM</h4>
+                        <h4 style="padding-top:10%">THE PROBLEM</h4>
                     </div>
                     <div class="full_content">
                         <p>
@@ -505,7 +559,7 @@
                         <!--</p>-->
                     <!--</div>-->
                     <div>
-                        <h4>THE POLICIES <span class = "cut_off"> BASICALLY AIMS TO </span> ACTUALLY </h4>
+                        <h4 style="padding-top:10%">THE POLICIES <span class = "cut_off"> BASICALLY AIMS TO </span> ACTUALLY </h4>
                     </div>
                     <div >
                         <p id="tick_box"><img src = assets/cross.svg style="vertical-align:middle">   Reduce Deforestation</p>
@@ -714,7 +768,9 @@
             </div>
         </div>
     </section>
+    
 
+    
 
     <script src="script/forest-area.js" charset="utf-8"></script>
     <script src="script/multiline-global.js" charset="utf-8"></script>
@@ -722,7 +778,10 @@
     <script type="text/javascript" src="script/nav.js"></script>
     <script type="text/javascript" src="script/land_grab_human.js"></script>
     <script type="text/javascript" src="script/dropdown.js"></script>
+    <script type="text/javascript" src="script/d3-tip.js"></script>
     
+  <!--<script src="d3-tip.js"></script>-->
+  <script type="text/javascript" src="script/map.js"></script>
 
 </body>
 
