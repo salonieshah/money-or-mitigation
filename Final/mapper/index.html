@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-body{
-  background-color: #0d0d0d;
-}
+  .active {
+    color: red !important;
+  }
+  .bar1 {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    padding-right: 25px;
+    cursor: pointer;
+    font-family: "avenir next", Arial, sans-serif;
+  }
+  .alias-label {
+    font-family: "avenir next", Arial, sans-serif;
+    font-size: 12px;
+  }
+  .bar {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    padding-right: 25px;
+    cursor: pointer;
+    font-family: "avenir next", Arial, sans-serif;
+  }
   .names {
     fill: none;
-    /*stroke: #fff;*/
+    stroke: #fff;
     stroke-linejoin: round;
   }
 
@@ -69,9 +89,57 @@ body{
     left: 100%;
   }
 
-  /*    text{
-      pointer-events:none;
-    }*/
+  .parent-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    height: 50px;
+    background-color: #242424;
+  }
+
+.child-bar-1 {
+  width: 40%;
+  background-color: #2c8b21
+}
+
+.child-bar-2 {
+  width: 30%;
+  background-color: #fdc22d
+}
+
+.child-bar-3 {
+  width: 30%;
+  background-color: #175fef
+}
+
+.parent-alias {
+  display: flex;
+	flex-direction: column;
+  align-items: flex-start;
+}
+.child-alias {
+  display: flex;
+  margin-bottom: 10px;
+}
+.child-alias-box {
+  width : 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+.child-alias-box-1 {
+  background-color: #2c8b21
+}
+
+.child-alias-box-2 {
+  background-color: #fdc22d
+}
+
+.child-alias-box-3 {
+  background-color: #175fef
+}
 
   .details {
     color: white;
@@ -82,13 +150,15 @@ body{
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="https://d3js.org/queue.v1.min.js"></script>
   <script src="https://d3js.org/topojson.v1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
   <script src="d3-tip.js"></script>
   <script>
     var format = d3.format(",");
     var landGrab;
+    var filtersSelected;
 
     var filters = {
-      All: [
+      'All': [
         "agriculture",
         "biofuels",
         "carbon_sequestration_REDD",
@@ -129,20 +199,20 @@ body{
     }
 
     // Set tooltips
-    // var tip = d3.tip()
-    //   .attr('class', 'd3-tip')
-    //   .offset([-10, 0])
-    //   .html(function (d) {
-    //     return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>Population: </strong><span class='details'>" + format(d.population) + "</span>";
-    //   })
+    var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function (d) {
+        return "<strong>Country: </strong><span class='details'>" + d.properties.name + "<br></span>" + "<strong>Population: </strong><span class='details'>" + format(d.population) + "</span>";
+      })
 
     var margin = { top: 0, right: 0, bottom: 0, left: 0 },
       width = 960 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
-    // var color = d3.scaleThreshold()
-    //   .domain([10000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000, 1500000000])
-    //   .range(["rgb(247,251,255)", "rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)", "rgb(33,113,181)", "rgb(8,81,156)", "rgb(8,48,107)", "rgb(3,19,43)"]);
+    var color = d3.scaleThreshold()
+      .domain([10000, 100000, 500000, 1000000, 5000000, 10000000, 50000000, 100000000, 500000000, 1500000000])
+      .range(["rgb(247,251,255)", "rgb(222,235,247)", "rgb(198,219,239)", "rgb(158,202,225)", "rgb(107,174,214)", "rgb(66,146,198)", "rgb(33,113,181)", "rgb(8,81,156)", "rgb(8,48,107)", "rgb(3,19,43)"]);
 
     var path = d3.geoPath();
 
@@ -159,7 +229,7 @@ body{
 
     var path = d3.geoPath().projection(projection);
 
-    // svg.call(tip);
+    svg.call(tip);
 
     queue()
       .defer(d3.json, "world_countries.json")
@@ -172,14 +242,38 @@ body{
       data = JSON.parse(window.localStorage.getItem('landGrab'));
       landGrab.features = landGrab.features.filter((d) => d.properties.cont === value);
       svg.selectAll("circle").remove()
-      createDots(landGrab, data)
+      createDots(landGrab, data, filtersSelected.isFilter, filtersSelected.value, filtersSelected.isAll)
+    }
+
+    function calculateBarLength(newLandGrab) {
+      var caribbean = _.countBy(newLandGrab, function (rec) {
+          return rec.properties.cont === "Caribbean-Latin"
+        }).true;
+        var africa = _.countBy(newLandGrab, function (rec) {
+          return rec.properties.cont === "Africa"
+        }).true;
+        var asia = _.countBy(newLandGrab, function (rec) {
+          return rec.properties.cont === "Asia-Pacific"
+        }).true;
+        let el = document.getElementsByClassName('child-bar-1');
+        el[0].style.width = (caribbean / (caribbean + asia + africa) ) * 100 + '%'
+        el = document.getElementsByClassName('child-bar-2');
+        el[0].style.width = (africa / (caribbean + asia + africa) ) * 100 + '%'
+        el = document.getElementsByClassName('child-bar-3');
+        el[0].style.width = (asia / (caribbean + asia + africa) ) * 100 + '%'
     }
 
     function createDots(landGrab, data, isFilter, value, isAll) {
-
       let newLandGrab = []
+        filtersSelected = {
+          isFilter,
+          value,
+          isAll,
+        };
+
       if (isFilter && !isAll) {
         newLandGrab = landGrab.features.filter((d) => d.properties[value] === "yes");
+        calculateBarLength(newLandGrab);
       } else if (isFilter && isAll) {
         landGrab.features.forEach((item) => {
           for (const key in item.properties) {
@@ -188,6 +282,7 @@ body{
             }
           }
         })
+        calculateBarLength(newLandGrab);
       } else {
         newLandGrab = landGrab.features
       }
@@ -207,7 +302,7 @@ body{
         .enter().append("path")
         .attr("d", path)
         .style("fill", function (d) {
-          return '#595959'
+          return '#A9A9A9'
         })
 
       var rodents = svg.append("g");
@@ -224,11 +319,11 @@ body{
         .attr("r", 1.5)
         .style("fill", function (d) {
           if (d.properties.cont === "Africa") {
-            return "#FFC300"
+            return "#FFFF00"
           } else if (d.properties.cont === "Asia-Pacific") {
-            return "#0C59F2"
+            return "#0000FF"
           } else if (d.properties.cont === "Caribbean-Latin") {
-            return "#268C16"
+            return "#32CD32"
           }
         });
     }
@@ -237,6 +332,7 @@ body{
       document.getElementById("secondary").innerHTML = ""
       for (const iterator of filters[key]) {
         var newDiv = document.createElement("div");
+        newDiv.classList.add('bar');
         var newContent = document.createTextNode(iterator);
         newDiv.onclick = function (e) {
           filteredDots(e, iterator)
@@ -249,6 +345,11 @@ body{
     }
 
     function filteredDots(e, key, isAll) {
+      var elements = document.getElementsByClassName(e.target.attributes[0].value);
+      [].forEach.call(elements, function(el) {
+          el.className = el.className.replace(/\active\b/, "");
+      });
+      e.target.classList.add('active');
       landGrab = JSON.parse(window.localStorage.getItem('landGrab'));
       data = JSON.parse(window.localStorage.getItem('landGrab'));
       svg.selectAll("circle").remove()
@@ -272,34 +373,34 @@ body{
         .enter().append("path")
         .attr("d", path)
         // .style("fill", function(d) { return color(populationById[d.id]); })
-        .style('stroke', '#f2f2f2')
+        .style('stroke', 'white')
         .style('stroke-width', 1.5)
         .style("opacity", 0.8)
-        
         // tooltips
-        // .style("stroke", "white")
-        // .style('stroke-width', 0.3)
-        // .on('mouseover', function (d) {
-        //   tip.show(d);
+        .style("stroke", "white")
+        .style('stroke-width', 0.3)
+        .on('mouseover', function (d) {
+          tip.show(d);
 
-        //   d3.select(this)
-        //     .style("opacity", 1)
-        //     .style("stroke", "white")
-        //     .style("stroke-width", 3);
-        // })
-        // .on('mouseout', function (d) {
-        //   tip.hide(d);
+          d3.select(this)
+            .style("opacity", 1)
+            .style("stroke", "white")
+            .style("stroke-width", 3);
+        })
+        .on('mouseout', function (d) {
+          tip.hide(d);
 
-        //   d3.select(this)
-        //     .style("opacity", 0.8)
-        //     .style("stroke", "white")
-        //     .style("stroke-width", 0.3);
-        // });
+          d3.select(this)
+            .style("opacity", 0.8)
+            .style("stroke", "white")
+            .style("stroke-width", 0.3);
+        });
 
       createDots(landGrab, data)
 
       for (const key in filters) {
         var newDiv = document.createElement("div");
+        newDiv.classList.add('bar1');
         var newContent = document.createTextNode(key);
         newDiv.onclick = function (e) {
           secondaryItems(e.target.innerHTML)
@@ -311,6 +412,7 @@ body{
 
         for (const iterator of filters[key]) {
           var newDiv = document.createElement("div");
+          newDiv.classList.add('bar');
           var newContent = document.createTextNode(iterator);
           newDiv.onclick = function (e) {
             filteredDots(e, iterator)
@@ -328,14 +430,36 @@ body{
     }
 
   </script>
+<div style="display:flex;">
+  <div style="display:flex;flex-direction: column; flex:5">
+    <div id="main" style=" display:flex; width: 100%;flex-wrap: wrap;"></div>
+    <div id="secondary" style=" display:flex; max-width: 100%; flex-wrap: wrap;"></div>
+  </div>
+  <div class="parent-alias" style="display:flex; flex: 1; padding: 10px">
+    <div class="child-alias">
+      <div class="child-alias-box child-alias-box-1"></div>
+      <div class="alias-label" onclick="specificPoint('Caribbean-Latin')">Caribbean-Latin</div>
+    </div>
+    <div class="child-alias">
+      <div class="child-alias-box child-alias-box-2"></div> 
+      <div class="alias-label" onclick="specificPoint('Africa')">Africa</div>
+    </div>
+    <div class="child-alias">
+      <div class="child-alias-box child-alias-box-3"></div> 
+      <div class="alias-label" onclick="specificPoint('Asia-Pacific')">Asia-Pacific</div>
+    </div>
+  </div>
+</div>
+<br><br>
+  <div class="parent-bar">
+    <div class="child-bar-1" onclick="specificPoint('Caribbean-Latin')">
+    </div>
+    <div class="child-bar-2" onclick="specificPoint('Africa')">
+    </div>
+    <div class="child-bar-3" onclick="specificPoint('Asia-Pacific')">
+    </div>
+  </div>
 
-  <button onclick="specificPoint('Africa')">Africa</button>
-  <button onclick="specificPoint('Asia-Pacific')">Asia-Pacific</button>
-  <button onclick="specificPoint('Caribbean-Latin')">Caribbean-Latin</button>
-
-
-  <div id="main" style=" display:flex; justify-content: space-evenly; width: 800px"></div>
-  <div id="secondary" style=" display:flex; justify-content: space-between"></div>
 </body>
 
 </html>

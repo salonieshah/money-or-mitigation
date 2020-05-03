@@ -1,4 +1,4 @@
-console.log("Nav")
+// console.log("Nav")
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {myFunction()};
 
@@ -16,3 +16,29 @@ function myFunction() {
     navbar.classList.remove("sticky");
   }
 }
+
+
+
+
+// let mainNavLinks = document.querySelectorAll("nav");
+// let mainSections = document.querySelectorAll("main section");
+
+// let lastId;
+// let cur = [];
+
+// window.addEventListener("scroll", event => {
+//   let fromTop = window.scrollY;
+
+//   mainNavLinks.forEach(link => {
+//     let section = document.querySelector(link.hash);
+
+//     if (
+//       section.offsetTop <= fromTop &&
+//       section.offsetTop + section.offsetHeight > fromTop
+//     ) {
+//       link.classList.add("current");
+//     } else {
+//       link.classList.remove("current");
+//     }
+//   });
+// });
