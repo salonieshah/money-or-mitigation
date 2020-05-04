@@ -82,6 +82,7 @@ var format = d3.format(",");
       .append('g')
       .attr('class', 'map');
 
+
     var projection = d3.geoMercator()
       .scale(130)
       .translate([width / 2, height / 1.5]);
@@ -293,3 +294,16 @@ var format = d3.format(",");
         .attr("class", "names")
         .attr("d", path);
     }
+    
+  
+  var g = svg.append("g");
+  var zoom = d3.zoom()
+      .scaleExtent([1, 8])
+      .on('zoom', function() {
+          g.selectAll('path')
+          .attr('transform', d3.event.transform);
+          g.selectAll("circle")
+          .attr('transform', d3.event.transform);
+});
+
+svg.call(zoom);

@@ -233,3 +233,7 @@ body{
    float: left;
     width: 65%;  
 }
+
+iframe{
+   border-style:none;
+}
