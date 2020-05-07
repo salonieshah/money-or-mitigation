@@ -192,8 +192,8 @@ function makeLineChart(dataset, xName, yObjs, axisLabels) {
         for (var y  in yObjs) {
             yObjs[y].tooltip = focus.append("g");
             yObjs[y].tooltip.append("circle").attr("r", 5);
-            yObjs[y].tooltip.append("rect").attr("x", 8).attr("y","-5").attr("width",25).attr("height",'0.75em');
-            yObjs[y].tooltip.append("text").attr("x", 9).attr("dy", ".35em");
+            yObjs[y].tooltip.append("rect").attr("x", 8).attr("y","-5").attr("width",'2.75em').attr("height",'0.75em');
+            yObjs[y].tooltip.append("text").attr("x", 9).attr("dy", ".44em");
         }
 
         // Year label
