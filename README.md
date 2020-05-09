@@ -24,9 +24,9 @@ The project aims to bridge the gap between knowing about carbon markets and syst
 * [Carbon stock in agroforestry coffee plantations with different shade trees in Villa Rica, Peru](https://link.springer.com/article/10.1007/s10457-015-9865-z?shared-article-renderer)
 <br>
 <br>
-<br>
 
 ### Data Sources
+I would like to express my deep and sincere gratitude to Parsons MSDV faculty, specifically Daniel Sauter and Aaron Hill.
 
 
 
