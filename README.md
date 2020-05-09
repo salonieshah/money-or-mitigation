@@ -26,7 +26,9 @@ The project aims to bridge the gap between knowing about carbon markets and syst
 <br>
 
 ### Data Sources
-I would like to express my deep and sincere gratitude to Parsons MSDV faculty, specifically Daniel Sauter and Aaron Hill.
+I would like to express my deep and sincere gratitude to Parsons MSDV faculty, specifically Daniel Sauter and Aaron Hill.<br>
+I would like to acknowledge Dr. Leonardo Figueroa Helland for his exceptional support and research assistance. <br>
+This work would not have been possible without the constant support and encouragement from the rest of the 2020 MSDV cohort.<br>
 
 
 
