@@ -66,7 +66,7 @@ var format = d3.format(",");
     }
 
     var margin = { top: 0, right: 0, bottom: 0, left: 0 },
-      width = 960 - margin.left - margin.right,
+      width = 1220 - margin.left - margin.right,
       height = 500 - margin.top - margin.bottom;
 
     var color = d3.scaleThreshold()
@@ -177,7 +177,7 @@ var format = d3.format(",");
 
           d3.select(this)
             .style("opacity", 1)
-            .style("stroke", "white")
+            .style("stroke", "#f2f2f2")
             .style("stroke-width", 3);
         })
         .on('mouseout', function (d) {
@@ -185,7 +185,7 @@ var format = d3.format(",");
 
           d3.select(this)
             .style("opacity", 0.8)
-            .style("stroke", "white")
+            .style("stroke", "none")
             .style("stroke-width", 0.3);
         })
         .attr("cx", function (d) {
@@ -194,7 +194,7 @@ var format = d3.format(",");
         .attr("cy", function (d) {
           return projection([d.properties.longitude, d.properties.latitude])[1];
         })
-        .attr("r", 1.5)
+        .attr("r", 1)
         .style("fill", function (d) {
           if (d.properties.cont === "Africa") {
             return "#FFC300"
@@ -296,13 +296,13 @@ var format = d3.format(",");
     }
     
   
-  var g = svg.append("g");
+  // var g = svg.append("g");
   var zoom = d3.zoom()
       .scaleExtent([1, 8])
       .on('zoom', function() {
-          g.selectAll('path')
+          svg.selectAll('path')
           .attr('transform', d3.event.transform);
-          g.selectAll("circle")
+          svg.selectAll("circle")
           .attr('transform', d3.event.transform);
 });
 
