@@ -14,11 +14,10 @@ The project aims to bridge the gap between knowing about carbon markets and syst
 ![2](https://github.com/salonieshah/money-or-mitigation/blob/master/2.png)
 ![3](https://github.com/salonieshah/money-or-mitigation/blob/master/3.png)
 ![4](https://github.com/salonieshah/money-or-mitigation/blob/master/4.png)
-
 <br>
 <br>
 <br>
-
+### Data Sources
 
 
 
