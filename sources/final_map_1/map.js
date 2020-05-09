@@ -293,3 +293,19 @@ var format = d3.format(",");
         .attr("class", "names")
         .attr("d", path);
     }
+
+
+  // var g = svg.append("g");
+  var zoom = d3.zoom()
+      .scaleExtent([1, 8])
+      .on('zoom', function() {
+          svg.selectAll('path')
+          .attr('transform', d3.event.transform);
+          svg.selectAll("circle")
+          .attr('transform', d3.event.transform);
+
+        console.log("Hello")
+      });
+
+console.log(zoom)
+svg.call(zoom);

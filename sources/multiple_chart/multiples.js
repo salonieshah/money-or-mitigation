@@ -32,7 +32,7 @@ var line = d3.line()
 
   
   xScale.domain(d3.extent(data, function(d) { return d.year; }));
-  yScale.domain([0,d3.max(data, function(d) {  return d.value; })]);
+  yScale.domain([0,d3.max(data, function(d) { return 40000 ; })]);
   
   // Nest data by subject.
   var cities = d3.nest()

@@ -189,11 +189,22 @@ function makeLineChart(dataset, xName, yObjs, axisLabels) {
         //Draw tooltips
         var focus = chartObj.svg.append("g").attr("class", "focus").style("display", "none");
 
+        // for (var y  in yObjs) {
+        //     yObjs[y].tooltip = focus.append("g");
+        //     yObjs[y].tooltip.append("circle").attr("r", 5);
+        //     yObjs[y].tooltip.append("rect").attr("x", 8).attr("y","-5").attr("width",'2.75em').attr("height",'0.75em');
+        //     yObjs[y].tooltip.append("text").attr("x", 9).attr("dy", ".44em");
+        // }
+        
+         var offset_rect = 8
+         var offset_text = 8
         for (var y  in yObjs) {
             yObjs[y].tooltip = focus.append("g");
             yObjs[y].tooltip.append("circle").attr("r", 5);
-            yObjs[y].tooltip.append("rect").attr("x", 8).attr("y","-5").attr("width",'2.75em').attr("height",'0.75em');
-            yObjs[y].tooltip.append("text").attr("x", 9).attr("dy", ".44em");
+            yObjs[y].tooltip.append("rect").attr("x", 8).attr("y",-offset_rect).attr("width","2.95em").attr("height",'0.75em');
+            yObjs[y].tooltip.append("text").attr("x", 9).attr("y", -offset_text).attr("dy", "0.75em");
+            offset_rect-=8
+            offset_text-=9
         }
 
         // Year label
