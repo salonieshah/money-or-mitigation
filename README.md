@@ -3,7 +3,7 @@
 #### Understanding the impact of carbon cap and trade markets on deforestation and emissions.
 ---------------------------------------------------------------------------------------------
 
-#### [Take me to the Project](https://salonieshah.github.io/money-or-mitigation/)
+#### [Project Link](https://salonieshah.github.io/money-or-mitigation/)
 
 ### Abstract
 The economic sector plays a significant role in achieving the ambitious target set by the Paris Agreement of limiting the increase in the global average temperature to well below 2°C above pre-industrial levels. Policies are being discussed and implemented nationally as well as internationally to achieve this target through mitigation, adaptation and environmental integrity. ‘Carbon Market’ mechanisms are one of the major sets of policies aiming to lower greenhouse gas emissions. Hence Carbon Trading and Offsetting Schemes such as REDD+, EU Emissions Trading System, California Cap and Trade were proposed and implemented. However, most of these policies failed to mitigate; rather they contributed to increasing the emissions, human rights violations and environmental justice violations.
