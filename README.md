@@ -18,10 +18,10 @@ The project aims to bridge the gap between knowing about carbon markets and syst
 <br>
 <br>
 ### Data Sources
-[Global Forest Watch](https://www.globalforestwatch.org/)
-[Land Matrix](https://landmatrix.org/)
-[Learning From 'Actually Existing'; REDD+: A Synthesis of Ethnographic Findings](http://www.environmentandsociety.org/mml/learning-actually-existing-redd-synthesis-ethnographic-findings)
-[Carbon stock in agroforestry coffee plantations with different shade trees in Villa Rica, Peru](https://link.springer.com/article/10.1007/s10457-015-9865-z?shared-article-renderer)
+    - [Global Forest Watch](https://www.globalforestwatch.org/)
+    - [Land Matrix](https://landmatrix.org/)
+    - [Learning From 'Actually Existing'; REDD+: A Synthesis of Ethnographic Findings](http://www.environmentandsociety.org/mml/learning-actually-existing-redd-synthesis-ethnographic-findings)
+    - [Carbon stock in agroforestry coffee plantations with different shade trees in Villa Rica, Peru](https://link.springer.com/article/10.1007/s10457-015-9865-z?shared-article-renderer)
 
 
 
