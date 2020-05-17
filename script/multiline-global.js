@@ -29,7 +29,7 @@ d3.csv('./database/emission-global.csv', function(error, data) {
         'FAO': {column: 'FAO'},
         'UNFCCC': {column: 'UNFCCC'},
         'Research': {column: 'Research'},
-    }, {xAxis: 'YEARS', yAxis: 'EMISSION FROM DEFORESTATION (IN BTCO2)'});
+    }, {xAxis: 'YEARS', yAxis: 'EMISSION FROM DEFORESTATION (IN MTCO2)'});
     chart.bind("#emission-line");
     chart.render();
 
